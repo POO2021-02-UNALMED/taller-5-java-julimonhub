@@ -1,70 +1,50 @@
-package zooAnimales;
+package gestion;
 
-import java.util.ArrayList;
+import zooAnimales.Animal;
+import java.util.*;
 
-public class Reptil extends Animal {
-	static private ArrayList<Reptil> listado = new ArrayList<>();
-	static public int iguanas = 0;
-	static public int serpientes = 0;
-	private String colorEscamas;
-	private int largoCola;
-
-	public Reptil(String nombre, int edad, String habitat, String genero, String colorEscamas, int largoCola) {
-		super(nombre, edad, habitat, genero);
-		this.colorEscamas = colorEscamas;
-		this.largoCola = largoCola;
-		listado.add(this);
-	}
-
-	public Reptil() {
-		listado.add(this);
+public class Zona {
+	private String nombre;
+	private Zoologico zoo;
+	private List<Animal> animales = new ArrayList<Animal>();
+	
+	public Zona() {}
+	
+	public Zona(String nombre, Zoologico zoo) {
+		this.nombre = nombre;
+		this.zoo = zoo;
 	}
 	
-	public static int cantidadReptiles() {
-		return listado.size();
+	public void agregarAnimales(Animal nuevoAnimal) {
+		nuevoAnimal.setZona(this);
+		animales.add(nuevoAnimal);
 	}
 	
-	static public Reptil crearIguana(String nombre, int edad, String genero) {
-		iguanas++;
-		return new Reptil(nombre, edad, "humedal", genero, "verde", 3);
+	public int cantidadAnimales() {
+		int cantidadAnimales = 0;
+		for(int i = 0; i < animales.size(); i++) {
+			cantidadAnimales++;
+		}
+		return cantidadAnimales;
 	}
 	
-	static public Reptil crearSerpiente(String nombre, int edad, String genero) {
-		serpientes++;
-		return new Reptil(nombre, edad, "jungla", genero, "blanco", 1);
+	public String getNombre() {
+		return this.nombre;
 	}
 	
-	@Override
-	public String movimiento() {
-		return "reptar";
-	}
-
-	public String getColorEscamas() {
-		return colorEscamas;
-	}
-
-	public void setColorEscamas(String colorEscamas) {
-		this.colorEscamas = colorEscamas;
-	}
-
-	public int getLargoCola() {
-		return largoCola;
-	}
-
-	public void setLargoCola(int largoCola) {
-		this.largoCola = largoCola;
-	}
-
-	public static ArrayList<Reptil> getListado() {
-		return listado;
-	}
-
-	public static int getIguanas() {
-		return iguanas;
-	}
-
-	public static int getSerpientes() {
-		return serpientes;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 	
+	public Zoologico getZoo() {
+		return this.zoo;
+	}
+	
+	public void setZoo(Zoologico zoo) {
+		this.zoo = zoo;
+	}
+	
+	public List<Animal> getAnimales() {
+		return this.animales;
+	}
 }

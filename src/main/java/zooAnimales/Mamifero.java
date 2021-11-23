@@ -65,7 +65,3 @@ public class Mamifero extends Animal {
 	}
 	
 }
-© 2021 GitHub, Inc.
-Terms
-Privacy
-Sec
